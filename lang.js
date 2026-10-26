@@ -1,8 +1,9 @@
 (function () {
   function pick() {
+    // A game passes its own language (any code): Russian stays, the rest get English.
     var q = new URLSearchParams(location.search).get('lang') ||
       new URLSearchParams(location.hash.replace(/^#/, '')).get('lang');
-    if (q === 'ru' || q === 'en') return q;
+    if (q) return q.toLowerCase().split(/[-_]/)[0] === 'ru' ? 'ru' : 'en';
     try {
       var s = localStorage.getItem('lang');
       if (s === 'ru' || s === 'en') return s;
