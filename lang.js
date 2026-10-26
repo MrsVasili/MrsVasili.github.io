@@ -1,6 +1,7 @@
 (function () {
   function pick() {
-    var q = new URLSearchParams(location.search).get('lang');
+    var q = new URLSearchParams(location.search).get('lang') ||
+      new URLSearchParams(location.hash.replace(/^#/, '')).get('lang');
     if (q === 'ru' || q === 'en') return q;
     try {
       var s = localStorage.getItem('lang');

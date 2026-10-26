@@ -1,0 +1,11 @@
+[
+  {
+    "id": "com.paraigr.katanakitchen",
+    "name": { "ru": "Katana Kitchen", "en": "Katana Kitchen" },
+    "icon": "games/katana-kitchen.png",
+    "stores": {
+      "google": "com.paraigr.katanakitchen",
+      "rustore": "com.paraigr.katanakitchen"
+    }
+  }
+]

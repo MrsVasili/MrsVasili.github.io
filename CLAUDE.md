@@ -8,7 +8,10 @@
 
 | Файл | Что это |
 |---|---|
-| `index.html` | Главная: имя разработчика, короткое описание, email, ссылки на документы |
+| `index.html` | Главная: «Наши игры» (вкладки магазинов), ниже имя разработчика, email, ссылки на документы |
+| `games.json` | Список игр: `id` (bundle id), `name` (ru/en), `icon`, `stores` (`google` — package name, `apple` — числовой id App Store, `rustore` — package name). Игра без магазина в `stores` не видна в его вкладке |
+| `games.js` | Рисует вкладки и карточки из `games.json` |
+| `games/` | Иконки игр (256×256 PNG). `katana-kitchen.png` — временная, из логотипа: у игры ещё нет иконки приложения |
 | `privacy-policy.html` | Политика конфиденциальности (RU + EN на одной странице) |
 | `terms.html` | Условия использования (RU + EN на одной странице) |
 | `style.css` | Общие стили, светлая/тёмная тема через CSS-переменные |
@@ -46,6 +49,14 @@
 - Email: `batonchikovaya@gmail.com`
 - Принудительно английская версия: добавить `?lang=en`
 
+## Кнопка «Другие наши игры»
+
+Её рисует Universal Game Kit на `GameMainScreen` (`GameApp.openMoreGames`) и открывает `https://mrsvasili.github.io/?store=<вкладка>&from=<bundle id>` (не на русском ещё `&lang=en`):
+- `store=google|apple|rustore` — какая вкладка открыта. **`apple` прячет вкладки**: из iOS-сборки игрок видит только App Store (Apple не пропускает упоминания других магазинов). Без параметра вкладку выбирает устройство (iPhone/iPad → App Store, иначе Google Play).
+- `from` — эта игра не показывается в списке.
+- Параметры читаются и после `#` (превью на claude.ai не передаёт `?`).
+- На Яндекс Играх и VK кнопки нет. Новая игра или новый магазин — строка в `games.json` и иконка в `games/`, в играх ничего менять не надо.
+
 ## TODO
 
 - [ ] **Имя разработчика.** Во всех трёх HTML заменить `<span class="placeholder">[DEVELOPER_NAME]</span>` на имя как в аккаунте Play Console (header, текст, контакты, footer). Класс `placeholder` подсвечивает заглушку жёлтым — после замены span убрать. Проверка: `grep -rn DEVELOPER_NAME .` должен ничего не находить.
@@ -55,7 +66,8 @@
 - [ ] **Ссылка на политику внутри приложений.** Google Play требует её и в Play Console, и в самом приложении. Ссылку и кнопку «Настройки конфиденциальности» (`GameKit.privacy.showPrivacyOptions`) для пользователей из ЕС владелец добавит сама в Universal Game Kit, в играх отдельно не делать.
 - [ ] **Опубликовать сайт.** Pages раздаёт `main`; файлы лежат в ветке `claude/*`, слить в `main` после замены `[DEVELOPER_NAME]`.
 - [ ] **Старые страницы на Google Sites** (`sites.google.com/view/r1privacypolicy`, `sites.google.com/view/r1termsofservice`) удалить или заменить ссылкой на новый сайт, чтобы не было двух разных версий.
-- [ ] (по желанию) Добавить на главную список приложений со ссылками на Google Play.
+- [x] Список игр на главной (вкладки Google Play / App Store / RuStore).
+- [ ] **Katana Kitchen в `games.json`**: ссылки Google Play и RuStore заработают после публикации; id App Store добавить, когда появится; заменить временную иконку на иконку приложения.
 
 ## История
 
