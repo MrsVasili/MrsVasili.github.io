@@ -14,6 +14,7 @@
 | `games/` | Иконки игр (256×256 PNG). `katana-kitchen.png` — временная, из логотипа: у игры ещё нет иконки приложения |
 | `privacy-policy.html` | Политика конфиденциальности (RU + EN на одной странице) |
 | `terms.html` | Условия использования (RU + EN на одной странице) |
+| `delete-data.html` | Как удалить свои данные (RU + EN): ссылка для поля «удаление данных» в Data safety; на неё ссылаются главная и раздел 7 политики |
 | `style.css` | Общие стили, светлая/тёмная тема через CSS-переменные |
 | `lang.js` | Переключатель языка |
 | `app-ads.txt` | Список авторизованных продавцов рекламы (Appodeal и партнёры); Play Console и рекламные сети проверяют его по адресу сайта разработчика. Обновлять из кабинета Appodeal |
@@ -46,6 +47,7 @@
 ## Ссылки для Play Console
 
 - Политика конфиденциальности: `https://mrsvasili.github.io/privacy-policy.html`
+- Удаление данных (Data safety): `https://mrsvasili.github.io/delete-data.html`
 - Сайт разработчика: `https://mrsvasili.github.io/`
 - Email: `batonchikovaya@gmail.com`
 - Принудительно английская версия: добавить `?lang=en`
