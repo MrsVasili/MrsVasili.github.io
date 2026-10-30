@@ -1,7 +1,7 @@
 // Games list with one tab per store, filled from games.json.
 // ?store=google|apple|rustore picks the tab; apple hides the other tabs
 // (iOS builds must not show other stores). ?from=<bundle id> leaves that game
-// out. Parameters may also come after # (claude.ai previews drop the query).
+// out; "hidden": true in games.json keeps a game off the page. Parameters may also come after # (claude.ai previews drop the query).
 (function () {
   var STORES = {
     google: { title: 'Google Play', url: function (id) { return 'https://play.google.com/store/apps/details?id=' + encodeURIComponent(id); } },
@@ -42,7 +42,7 @@
     var current = STORES[asked] ? asked : guessStore();
     var locked = asked === 'apple';
     var from = p.get('from');
-    games = games.filter(function (g) { return g.id !== from; });
+    games = games.filter(function (g) { return !g.hidden && g.id !== from; });
 
     var tabs = el('div', 'tabs');
     tabs.setAttribute('role', 'tablist');
