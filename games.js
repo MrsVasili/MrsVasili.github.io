@@ -99,7 +99,7 @@
   document.addEventListener('DOMContentLoaded', function () {
     var root = document.getElementById('games');
     if (!root) return;
-    fetch('games.json')
+    fetch('games.json?v=2', { cache: 'no-cache' })
       .then(function (r) { return r.json(); })
       .then(function (games) { render(root, games, params()); })
       .catch(function () { root.appendChild(both('p', 'empty muted', 'Не удалось загрузить список игр.', 'Could not load the games list.')); });
