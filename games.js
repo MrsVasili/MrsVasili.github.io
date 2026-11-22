@@ -60,14 +60,20 @@
       var shown = games.filter(function (g) { return g.stores && g.stores[key]; });
       shown.forEach(function (g) {
         var a = el('a', 'game');
-        a.href = STORES[key].url(g.stores[key]);
+        var destination = g.stores[key];
+        a.href = /^https:\/\//.test(destination) ? destination : STORES[key].url(destination);
         a.rel = 'noopener';
         var img = el('img');
         img.src = g.icon; img.alt = ''; img.width = 64; img.height = 64; img.loading = 'lazy';
         a.appendChild(img);
+        var details = el('span', 'game-details');
         var name = el('span', 'name');
         name.appendChild(both('span', '', g.name.ru, g.name.en));
-        a.appendChild(name);
+        details.appendChild(name);
+        if (g.description) {
+          details.appendChild(both('span', 'game-description', g.description.ru, g.description.en));
+        }
+        a.appendChild(details);
         a.appendChild(el('span', 'chevron', '›'));
         list.appendChild(a);
       });

@@ -1,15 +1,19 @@
 [
   {
     "id": "com.paraigr.katanakitchen",
-    "hidden": true,
     "name": {
       "ru": "Katana Kitchen",
       "en": "Katana Kitchen"
     },
     "icon": "games/katana-kitchen.png",
+    "description": {
+      "ru": "Нарезай продукты и отмеряй жидкости точно по рецепту. Проходи испытания на время, открывай новые заведения и получай новые клинки.",
+      "en": "Slice ingredients and measure liquids just as the recipe calls for. Beat timed challenges, open new restaurants, and unlock new blades."
+    },
     "stores": {
-      "google": "com.paraigr.katanakitchen",
-      "rustore": "com.paraigr.katanakitchen"
+      "google": "https://play.google.com/store/apps/details?id=com.paraigr.katanakitchen&hl=ru",
+      "apple": "https://apps.apple.com/us/app/katana-kitchen/id6830551528",
+      "rustore": "https://www.rustore.ru/catalog/app/com.paraigr.katanakitchen"
     }
   }
 ]
